@@ -94,6 +94,7 @@ wayland = [
     "iced_runtime/wayland",
     "iced_wgpu/wayland",
 ]
+wayland_input_method = ["wayland", "iced/wayland_input_method", "iced_winit/wayland_input_method"]
 surface-message = []
 # multi-window support
 multi-window = []
@@ -189,7 +190,7 @@ phf = { version = "0.13.1", features = ["macros"] }
 path = "cosmic-theme"
 
 [dependencies.iced]
-path = "./iced"
+path = "../iced"
 default-features = false
 features = [
     "advanced",
@@ -201,35 +202,36 @@ features = [
 ]
 
 [dependencies.iced_runtime]
-path = "./iced/runtime"
+path = "../iced/runtime"
 
 [dependencies.iced_renderer]
-path = "./iced/renderer"
+path = "../iced/renderer"
 
 [dependencies.iced_core]
-path = "./iced/core"
+path = "../iced/core"
 features = ["serde"]
 
 [dependencies.iced_widget]
-path = "./iced/widget"
+path = "../iced/widget"
 features = ["canvas"]
 
 [dependencies.iced_futures]
-path = "./iced/futures"
+path = "../iced/futures"
 
 [dependencies.iced_accessibility]
-path = "./iced/accessibility"
+path = "../iced/accessibility"
 optional = true
 
 [dependencies.iced_tiny_skia]
-path = "./iced/tiny_skia"
+path = "../iced/tiny_skia"
 
 [dependencies.iced_winit]
-path = "./iced/winit"
+path = "../iced/winit"
+features = ["application"]
 optional = true
 
 [dependencies.iced_wgpu]
-path = "./iced/wgpu"
+path = "../iced/wgpu"
 optional = true
 
 [dependencies.cosmic-panel-config]
@@ -244,7 +246,7 @@ members = [
     "cosmic-theme",
     "examples/*",
 ]
-exclude = ["iced"]
+exclude = ["../iced"]
 
 [workspace.dependencies]
 async-std = "1.13"
