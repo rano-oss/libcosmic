@@ -94,11 +94,12 @@ wayland = [
     "iced_runtime/wayland",
     "iced_wgpu/wayland",
 ]
+wayland_input_method = ["wayland", "iced/wayland_input_method", "iced_winit/wayland_input_method"]
 surface-message = []
 # multi-window support
 multi-window = []
 # Render with wgpu
-wgpu = ["iced/wgpu", "iced_wgpu"]
+wgpu = ["iced/wgpu", "iced_wgpu", "iced_wgpu/cctk"]
 # X11 window support via winit
 winit = ["iced/winit", "iced_winit"]
 winit_debug = ["winit", "debug"]
@@ -189,7 +190,8 @@ phf = { version = "0.13.1", features = ["macros"] }
 path = "cosmic-theme"
 
 [dependencies.iced]
-path = "./iced"
+git = "https://github.com/rano-oss/iced.git"
+branch = "experimental/xx-im-preedit-start"
 default-features = false
 features = [
     "advanced",
@@ -201,40 +203,48 @@ features = [
 ]
 
 [dependencies.iced_runtime]
-path = "./iced/runtime"
+git = "https://github.com/rano-oss/iced.git"
+branch = "experimental/xx-im-preedit-start"
 
 [dependencies.iced_renderer]
-path = "./iced/renderer"
+git = "https://github.com/rano-oss/iced.git"
+branch = "experimental/xx-im-preedit-start"
 
 [dependencies.iced_core]
-path = "./iced/core"
+git = "https://github.com/rano-oss/iced.git"
+branch = "experimental/xx-im-preedit-start"
 features = ["serde"]
 
 [dependencies.iced_widget]
-path = "./iced/widget"
+git = "https://github.com/rano-oss/iced.git"
+branch = "experimental/xx-im-preedit-start"
 features = ["canvas"]
 
 [dependencies.iced_futures]
-path = "./iced/futures"
+git = "https://github.com/rano-oss/iced.git"
+branch = "experimental/xx-im-preedit-start"
 
 [dependencies.iced_accessibility]
-path = "./iced/accessibility"
+git = "https://github.com/rano-oss/iced.git"
+branch = "experimental/xx-im-preedit-start"
 optional = true
 
 [dependencies.iced_tiny_skia]
-path = "./iced/tiny_skia"
+git = "https://github.com/rano-oss/iced.git"
+branch = "experimental/xx-im-preedit-start"
 
 [dependencies.iced_winit]
-path = "./iced/winit"
+git = "https://github.com/rano-oss/iced.git"
+branch = "experimental/xx-im-preedit-start"
 optional = true
 
 [dependencies.iced_wgpu]
-path = "./iced/wgpu"
+git = "https://github.com/rano-oss/iced.git"
+branch = "experimental/xx-im-preedit-start"
 optional = true
 
 [dependencies.cosmic-panel-config]
 git = "https://github.com/pop-os/cosmic-panel"
-# path = "../cosmic-panel/cosmic-panel-config"
 optional = true
 
 [workspace]
@@ -244,7 +254,6 @@ members = [
     "cosmic-theme",
     "examples/*",
 ]
-exclude = ["iced"]
 
 [workspace.dependencies]
 async-std = "1.13"
@@ -264,4 +273,5 @@ tempfile = "3.27.0"
 edition = "2024"
 
 [build-dependencies]
-build_helpers = { path = "./iced/build_helpers" }
+build_helpers = { git = "https://github.com/rano-oss/iced.git", branch = "experimental/xx-im-preedit-start" }
+
