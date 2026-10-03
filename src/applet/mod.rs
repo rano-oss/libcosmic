@@ -119,6 +119,23 @@ impl Default for Context {
 }
 
 impl Context {
+    /// Show or hide this applet in the panel.
+    ///
+    /// Hide sends `xdg_toplevel.set_minimized`; show sends `set_maximized`, which
+    /// cosmic-panel remaps as unminimize for panel applets (they are not maximized).
+    #[cfg(feature = "winit")]
+    pub fn set_visible<Message: Send + 'static>(
+        &self,
+        id: window::Id,
+        visible: bool,
+    ) -> crate::app::Task<Message> {
+        if visible {
+            crate::command::maximize(id, true)
+        } else {
+            crate::command::minimize(id)
+        }
+    }
+
     #[must_use]
     pub fn suggested_size(&self, is_symbolic: bool) -> (u16, u16) {
         match &self.size {
